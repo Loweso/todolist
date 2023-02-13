@@ -1,29 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react';
-import {Button, Select} from './Button'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import ToDoListModal from './ToDoListModal';
-
+import { Select } from './components/Button';
+import ToDoListModal from './components/Modal';
 
 function App() {
-  const [show, setShow] = useState(false)
-  
+  //naming convention on boolean variables
+  const [isOpen, setIsOpen] = useState(false);
+
+  //create a function to handle different actions such as clicking a button
+  const handleModalOpen = () => {
+    setIsOpen(true);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-            <h2>To-Do List
-              <button className="btn btn-primary" type="button" onClick={() => setShow(true)}>Add Task</button>
-              <Select>
-                <option>All</option>
-                <option>Incomplete</option>
-                <option>Complete</option>
-              </Select>
-            </h2>
+        <h2>
+          To-Do List
+          <button className="btn btn-primary" type="button" onClick={handleModalOpen}>
+            Add Task
+          </button>
+          <Select>
+            <option>All</option>
+            <option>Incomplete</option>
+            <option>Complete</option>
+          </Select>
+        </h2>
         <div className="taskRoll">
           <p>No activities yet!</p>
         </div>
-        <ToDoListModal show={show} setShow={setShow} />
+        {isOpen && <ToDoListModal setIsOpen={setIsOpen} />}
       </header>
     </div>
   );
