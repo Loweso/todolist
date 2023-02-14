@@ -1,0 +1,19 @@
+.navbar-container {
+    background-color: #D594EC;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .site-title {
+    margin: 2.5% 2.5% 2.5% 8.5%;
+    font-size: 30px;
+    display: flex;
+  }
+
+  .navbar-greeting {
+    margin: 2.5% 8.5% 2.5% 2.5%;
+    font-size: 30px;
+    display: flex;
+  }
