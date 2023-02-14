@@ -8,12 +8,16 @@ import ToDoListModal from './ToDoListModal';
 
 function App() {
   const [show, setShow] = useState(false)
+
+  const handleModal = () => {
+    setShow(true)
+  }
   
   return (
     <div className="App">
       <header className="App-header">
             <h2>To-Do List
-              <button className="btn btn-primary" type="button" onClick={() => setShow(true)}>Add Task</button>
+              <button className="btn btn-primary" type="button" onClick={handleModal}>Add Task</button>
               <Select>
                 <option>All</option>
                 <option>Incomplete</option>
@@ -23,7 +27,7 @@ function App() {
         <div className="taskRoll">
           <p>No activities yet!</p>
         </div>
-        <ToDoListModal show={show} setShow={setShow} />
+        {show && <ToDoListModal/>}
       </header>
     </div>
   );

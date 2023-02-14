@@ -16,6 +16,7 @@
   .App-header {
     box-align: center;
     display: flex;
+    position: relative;
     background-color: #282c34;
     height: 100vh;
     padding: 20vh 20vh;
@@ -48,4 +49,10 @@
     to {
       transform: rotate(360deg);
     }
+  }
+
+  .modal-container-test {
+    position: absolute;
+    z-index: 10;
+    background-color: red;
   }
