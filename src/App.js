@@ -1,11 +1,13 @@
 import React from 'react'
 import './App.css'
+import Body from './components/Body'
 import Navbar from './components/Navbar'
 
 function App() {
   return (
-    <div style={{display:'flex'}}>
+    <div className='app-container'>
       <Navbar/>
+      <Body/>
     </div>
   )
 }

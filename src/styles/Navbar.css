@@ -6,13 +6,13 @@
     justify-content: space-between;
   }
   
-  .site-title {
+.site-title {
     margin: 2.5% 2.5% 2.5% 8.5%;
     font-size: 30px;
     display: flex;
   }
 
-  .navbar-greeting {
+.navbar-greeting {
     margin: 2.5% 8.5% 2.5% 2.5%;
     font-size: 30px;
     display: flex;
