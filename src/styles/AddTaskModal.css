@@ -4,7 +4,6 @@
   display: grid;
   justify-content: center;
   position: absolute;
-  height: 40vh;
   margin-top: 12.5%;
   text-align: center;
   width: 35%;
@@ -12,4 +11,18 @@
 
 .modal-details {
   font-size: 35px;
+}
+
+.input-container {
+  display: flex;
+  align-content: space-evenly;
+  row-gap: 5%;
+  height: 50%;
+}
+
+.input-textbox {
+  width: 100%;
+  padding: 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
 }
