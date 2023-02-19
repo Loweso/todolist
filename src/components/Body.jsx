@@ -3,17 +3,22 @@ import AddTaskModal from "./AddTaskModal";
 import TaskModal from "./TaskModal";
 import "../styles/Body.css";
 
+const defaultTasks = [
+  {
+    name: "Wash Laundry",
+    detail: "Wash the shirts like you wash away your tears.",
+  },
+  {
+    name: "Finish Problem Set",
+    detail: "Finish problem set like you finish your life.",
+  },
+];
+
 function Body() {
   const [isAddModalOpen, setAddModalOpen] = useState(false);
   const [isTaskModalOpen, setTaskModalOpen] = useState(false);
-  const [tasks, addTasks] = useState(["Wash Laundry", "Finish Problem Set"]);
-
-  /*
-  const [taskDetails, addTaskDetails] = useState([
-    "Wash the shirts like you wash away your tears",
-    "Finish problem set like you finish your life",
-  ]);
-*/
+  const [tasks, setTasks] = useState(defaultTasks);
+  const [currentTask, setCurrentTask] = useState({ name: "", detail: "" });
 
   const addModalToggle = () => {
     setAddModalOpen(!isAddModalOpen);
@@ -21,8 +26,13 @@ function Body() {
   const taskModalToggle = () => {
     setTaskModalOpen(!isTaskModalOpen);
   };
-  const taskAdded = (task, detail) => {
-    addTasks([...tasks, task]);
+  const taskAdded = (task) => {
+    setTasks([...tasks, task]);
+    console.log(task);
+  };
+  const handleTaskClick = (task) => {
+    setCurrentTask(task);
+    taskModalToggle();
   };
 
   return (
@@ -34,11 +44,11 @@ function Body() {
         <p className="mb-7">Task List:</p>
         {tasks.map((task) => (
           <button
-            key={task}
+            key={task.name}
             className="task-button bg-[#D9D9D9]"
-            onClick={taskModalToggle}
+            onClick={() => handleTaskClick(task)}
           >
-            {task}
+            {task.name}
           </button>
         ))}
       </div>
@@ -46,13 +56,14 @@ function Body() {
         <AddTaskModal
           isAddModalOpen={isAddModalOpen}
           setAddModalOpen={setAddModalOpen}
-          onClick={taskAdded}
+          onTaskAdd={taskAdded}
         />
       )}
       {isTaskModalOpen && (
         <TaskModal
           isTaskModalOpen={isTaskModalOpen}
           setTaskModalOpen={setTaskModalOpen}
+          currentTask={currentTask}
         />
       )}
     </div>
@@ -60,3 +71,18 @@ function Body() {
 }
 
 export default Body;
+
+/*
+
+{isTaskModalOpen &&
+        tasks.map((task, detail, index) => (
+          <TaskModal
+            key={index}
+            isTaskModalOpen={isTaskModalOpen}
+            setTaskModalOpen={setTaskModalOpen}
+            index={tasks.findIndex((item) => item.indexOf(task) > -1)}
+            detail={taskDetails[index]}
+          />
+        ))}
+
+*/
