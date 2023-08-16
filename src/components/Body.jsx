@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AddTaskModal from "./AddTaskModal";
 import TaskModal from "./TaskModal";
-import "../styles/Body.css";
+import TaskList from "./TaskList";
 
 const defaultTasks = [
   {
@@ -15,54 +15,48 @@ const defaultTasks = [
 ];
 
 function Body() {
-  const [isAddModalOpen, setAddModalOpen] = useState(false);
-  const [isTaskModalOpen, setTaskModalOpen] = useState(false);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
   const [tasks, setTasks] = useState(defaultTasks);
   const [currentTask, setCurrentTask] = useState({ name: "", detail: "" });
 
-  const addModalToggle = () => {
-    setAddModalOpen(!isAddModalOpen);
+  const toggleAddModal = () => {
+    setIsAddModalOpen(!isAddModalOpen);
   };
-  const taskModalToggle = () => {
-    setTaskModalOpen(!isTaskModalOpen);
+  const toggleTaskModal = () => {
+    setIsTaskModalOpen(!isTaskModalOpen);
   };
-  const taskAdded = (task) => {
+  const updateTaskList = (task) => {
     setTasks([...tasks, task]);
     console.log(task);
   };
   const handleTaskClick = (task) => {
     setCurrentTask(task);
-    taskModalToggle();
+    toggleTaskModal();
   };
 
   return (
-    <div className="body-container">
-      <button className="add-task-button bg-[#D9D9D9]" onClick={addModalToggle}>
+    <div className="grid h-full justify-items-center py-20 relative">
+      <button
+        className="text-xl h-20 w-1/6 mb-10 bg-[#D9D9D9] hover:bg-zinc-400"
+        onClick={toggleAddModal}
+      >
         Add Task
       </button>
-      <div className="tasklist-container">
-        <p className="mb-7">Task List:</p>
-        {tasks.map((task) => (
-          <button
-            key={task.name}
-            className="task-button bg-[#D9D9D9]"
-            onClick={() => handleTaskClick(task)}
-          >
-            {task.name}
-          </button>
-        ))}
-      </div>
+
+      <TaskList tasks={tasks} handleTaskClick={handleTaskClick} />
+
       {isAddModalOpen && (
         <AddTaskModal
           isAddModalOpen={isAddModalOpen}
-          setAddModalOpen={setAddModalOpen}
-          onTaskAdd={taskAdded}
+          setIsAddModalOpen={setIsAddModalOpen}
+          onTaskAdd={updateTaskList}
         />
       )}
       {isTaskModalOpen && (
         <TaskModal
           isTaskModalOpen={isTaskModalOpen}
-          setTaskModalOpen={setTaskModalOpen}
+          setIsTaskModalOpen={setIsTaskModalOpen}
           currentTask={currentTask}
         />
       )}
@@ -71,18 +65,3 @@ function Body() {
 }
 
 export default Body;
-
-/*
-
-{isTaskModalOpen &&
-        tasks.map((task, detail, index) => (
-          <TaskModal
-            key={index}
-            isTaskModalOpen={isTaskModalOpen}
-            setTaskModalOpen={setTaskModalOpen}
-            index={tasks.findIndex((item) => item.indexOf(task) > -1)}
-            detail={taskDetails[index]}
-          />
-        ))}
-
-*/

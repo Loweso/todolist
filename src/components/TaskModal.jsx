@@ -1,20 +1,18 @@
 import React from "react";
-import "../styles/TaskModal.css";
 
 const TaskModal = (props) => {
-  //get the props and destruct them inside
-  const { setTaskModalOpen, currentTask } = props;
+  const { setIsTaskModalOpen, currentTask } = props;
 
   const handleModalClose = () => {
-    setTaskModalOpen(false);
+    setIsTaskModalOpen(false);
   };
 
   return (
-    <div className="modal-container py-6">
+    <div className="bg-tasklistgrey text-lg grid justify-center top-1/4 w-1/3 h-1/2 text-center absolute py-6">
       <p>Task Details:</p>
-      <p className="modal-details">{currentTask.detail}</p>
+      <p className="text-lg">{currentTask.detail}</p>
       <button
-        className="modal-button bg-[#D9D9D9] border border-black"
+        className="bg-[#D9D9D9] border border-black"
         onClick={handleModalClose}
       >
         Close

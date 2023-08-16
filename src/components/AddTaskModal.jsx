@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import "../styles/AddTaskModal.css";
 
 const AddTaskModal = (props) => {
-  const { setAddModalOpen, onTaskAdd } = props;
+  const { setIsAddModalOpen, onTaskAdd } = props;
   const [inputTaskName, setInputTaskName] = useState("");
   const [inputTaskDetails, setInputTaskDetails] = useState("");
 
   const handleModalClose = () => {
-    setAddModalOpen(false);
+    setIsAddModalOpen(false);
   };
 
   const handleInputTaskNameUpdate = (event) => {
@@ -21,29 +20,29 @@ const AddTaskModal = (props) => {
   const handleInputTaskNameAdd = (event) => {
     event.preventDefault();
     onTaskAdd({ name: inputTaskName, detail: inputTaskDetails });
-    setAddModalOpen(false);
+    setIsAddModalOpen(false);
   };
 
   return (
-    <div className="modal-container bg-[#D9D9D9] py-6">
+    <div className="bg-tasklistgrey text-lg grid justify-center absolute top-1/4 text-center w-1/3 py-6">
       <p>Add Task:</p>
-      <div className="input-container mt-3">
+      <div className="gap-y-[5%] flex content-evenly h-1/2 mt-3">
         <div className="w-1/3">
           <p className="text-lg">Task Name:</p>
         </div>
         <input
-          className="input-textbox my-16"
+          className="w-full p-5 my-2 mx-0 box-border"
           type="text"
           value={inputTaskName}
           onChange={handleInputTaskNameUpdate}
         ></input>
       </div>
-      <div className="input-container mb-3">
+      <div className="gap-y-[5%] flex content-evenly h-1/2 mb-3">
         <div className="w-1/3">
           <p className="text-lg">Task Details:</p>
         </div>
         <input
-          className="input-textbox my-16"
+          className="w-full p-5 my-2 mx-0 box-border"
           type="text"
           value={inputTaskDetails}
           onChange={handleInputTaskDetailsUpdate}
