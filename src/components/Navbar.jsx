@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Navbar() {
   return (
-    <div className="bg-navbarcolor flex w-full justify-between items-center">
+    <div className="bg-navbarcolor fixed flex w-full justify-between items-center z-10">
       <p className="flex text-3xl ml-24">
         <b>TODOLIST</b>
       </p>

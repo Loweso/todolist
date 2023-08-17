@@ -10,7 +10,7 @@ const TaskList = (props) => {
       {tasks.map((task) => (
         <button
           key={task.name}
-          className=" text-xl h-20 w-full mb-10 bg-[#D9D9D9] hover:bg-zinc-400"
+          className=" text-xl h-20 w-full mb-10 bg-tasklistgrey hover:bg-tlhovergrey"
           onClick={() => handleTaskClick(task)}
         >
           {task.name}

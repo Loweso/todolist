@@ -36,9 +36,9 @@ function Body() {
   };
 
   return (
-    <div className="grid h-full justify-items-center py-20 relative">
+    <div className="grid h-full justify-items-center py-20 relative mt-20">
       <button
-        className="text-xl h-20 w-1/6 mb-10 bg-[#D9D9D9] hover:bg-zinc-400"
+        className="text-xl h-20 w-1/6 mb-10 bg-tasklistgrey hover:bg-tlhovergrey"
         onClick={toggleAddModal}
       >
         Add Task

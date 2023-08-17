@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         tasklistgrey: "#d9d9d9",
+        tlhovergrey: "#A9A9A9",
         navbarcolor: "#d594ec",
       },
     },
