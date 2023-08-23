@@ -19,7 +19,11 @@ const AddTaskModal = (props) => {
 
   const handleInputTaskNameAdd = (event) => {
     event.preventDefault();
-    onTaskAdd({ name: inputTaskName, detail: inputTaskDetails });
+    onTaskAdd({
+      name: inputTaskName,
+      detail: inputTaskDetails,
+      category: "To Do",
+    });
     setIsAddModalOpen(false);
   };
 
