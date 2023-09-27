@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import AddTaskModal from "./AddTaskModal";
 import TaskModal from "./TaskModal";
 import UpdatedTaskList from "./UpdatedTaskList";
-//import TaskList from "./TaskList";
 
 const defaultTasks = [
   {
@@ -63,10 +62,6 @@ function Body() {
       </button>
 
       <UpdatedTaskList tasks={tasks} handleTaskClick={handleTaskClick} />
-
-      {/*
-      <TaskList tasks={tasks} handleTaskClick={handleTaskClick} />
-      */}
 
       {isAddModalOpen && (
         <AddTaskModal

@@ -1,12 +1,20 @@
 import React from "react";
+import SearchBar from "./SearchBar";
 
 export default function Navbar() {
   return (
-    <div className="bg-navbarcolor fixed flex h-25 w-full justify-between items-center z-10">
-      <p className="flex text-3xl ml-24">
-        <b>TODOLIST</b>
-      </p>
-      <p className="flex text-3xl my-10 mr-24">Hi, Maxell</p>
+    <div className="bg-navbarcolor fixed flex h-28 w-full justify-between items-center z-10">
+      <div className="ml-24 flex">
+        <p className="flex text-3xl">
+          <b>TODOLIST</b>
+        </p>
+        <button className="mx-5">
+          <p className="flex text-2xl ml-24 text-opacity-50">
+            <b>About Us</b>
+          </p>
+        </button>
+      </div>
+      <SearchBar />
     </div>
   );
 }
