@@ -1,36 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AddTaskModal from "./AddTaskModal";
 import TaskModal from "./TaskModal";
 import UpdatedTaskList from "./UpdatedTaskList";
-
-const defaultTasks = [
-  {
-    name: "Wash Laundry",
-    detail: "Wash the shirts like you wash away your tears.",
-    category: "To Do",
-  },
-  {
-    name: "Finish Problem Set",
-    detail: "Finish problem set like you finish your life.",
-    category: "In Progress",
-  },
-  {
-    name: "Run Away",
-    detail: "Run away, Simba. Run away and never return.",
-    category: "Finished",
-  },
-  {
-    name: "Look Around",
-    detail:
-      "Look around, look around at how lucky we are to be alive right now.",
-    category: "To Do",
-  },
-];
+import defaultTasks from "./constants.jsx";
+import { useSearchParams } from "react-router-dom";
 
 function Body() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
   const [tasks, setTasks] = useState(defaultTasks);
+  const [searchParams] = useSearchParams();
   const [currentTask, setCurrentTask] = useState({
     name: "",
     detail: "",
@@ -45,7 +24,6 @@ function Body() {
   };
   const updateTaskList = (task) => {
     setTasks([...tasks, task]);
-    console.log(task);
   };
   const handleTaskClick = (task) => {
     setCurrentTask(task);
@@ -60,7 +38,6 @@ function Body() {
       >
         Add Task
       </button>
-
       <UpdatedTaskList tasks={tasks} handleTaskClick={handleTaskClick} />
 
       {isAddModalOpen && (

@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { redirect } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 
 export default function SearchBar() {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleSearch = () => {
     console.log(searchQuery);
-    redirect(`/search/${searchQuery}`);
+    if (searchQuery !== "") navigate(`/search/${searchQuery}`);
   };
 
   return (
